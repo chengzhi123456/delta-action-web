@@ -11,10 +11,12 @@
             box-sizing: border-box;
             font-family: "Microsoft Yahei", sans-serif;
         }
+
         body {
             background-color: #0a101f;
             color: #fff;
         }
+
         nav {
             background-color: #060b18;
             padding: 15px 50px;
@@ -25,20 +27,24 @@
             top: 0;
             z-index: 999;
         }
+
         .logo {
             font-size: 24px;
             font-weight: bold;
             color: #25a6ff;
         }
+
         .nav-menu a {
             color: #ccc;
             text-decoration: none;
             margin-left: 30px;
             transition: 0.3s;
         }
+
         .nav-menu a:hover {
             color: #25a6ff;
         }
+
         .banner {
             height: 600px;
             background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)), url('https://p.qqan.com/up/2025-3/17109166468933182.jpg') center/cover no-repeat;
@@ -48,16 +54,19 @@
             align-items: center;
             text-align: center;
         }
+
         .banner h1 {
             font-size: 60px;
             margin-bottom: 20px;
         }
+
         .banner p {
             font-size: 18px;
             color: #ddd;
             max-width: 700px;
             line-height: 1.8;
         }
+
         .download-btn {
             margin-top: 30px;
             padding: 12px 40px;
@@ -69,18 +78,22 @@
             cursor: pointer;
             transition: 0.3s;
         }
+
         .download-btn:hover {
             background-color: #0088dd;
         }
+
         .section {
             padding: 80px 50px;
         }
+
         .section-title {
             text-align: center;
             font-size: 36px;
             margin-bottom: 60px;
             color: #25a6ff;
         }
+
         .intro-box {
             display: flex;
             gap: 40px;
@@ -88,17 +101,20 @@
             flex-wrap: wrap;
             justify-content: center;
         }
+
         .intro-text {
             flex: 1;
             min-width: 300px;
             line-height: 2;
             color: #ccc;
         }
+
         .game-mode {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
+
         .mode-card {
             background-color: #101a33;
             padding: 30px;
@@ -107,14 +123,17 @@
             transition: 0.3s;
             cursor: pointer;
         }
+
         .mode-card:hover {
             transform: translateY(-10px);
             border-color: #25a6ff;
         }
+
         .mode-card h3 {
             margin-bottom: 15px;
             color: #25a6ff;
         }
+
         .mode-card p {
             color: #bbb;
             line-height: 1.7;
@@ -134,6 +153,7 @@
             overflow-y: auto;
             padding: 30px 10px;
         }
+
         .modal-content {
             background: #101a33;
             padding: 40px;
@@ -143,6 +163,7 @@
             color: white;
             position: relative;
         }
+
         .close {
             position: absolute;
             top: 20px;
@@ -151,62 +172,113 @@
             cursor: pointer;
             color: #fff;
         }
+
         .operator-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
+
+        /* 干员卡片 */
         .operator-card {
             background: #1a2746;
             border-radius: 12px;
             overflow: hidden;
             transition: 0.3s;
+            position: relative;
         }
+
+        /* 头像区域：无图也正常显示 */
         .operator-img {
             width: 100%;
             height: 280px;
-            object-fit: cover;
+            background: #111a33;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #aaa;
+            position: relative;
+            z-index: 1;
         }
+
+        /* 鼠标悬浮：干员虚影特效 */
+        .operator-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 280px;
+            background: rgba(37, 166, 255, 0.1);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 0;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .operator-card:hover::before {
+            opacity: 1;
+            background: linear-gradient(transparent, rgba(37, 166, 255, 0.25));
+            transform: scale(1.05);
+        }
+
         .operator-info {
             padding: 20px;
+            position: relative;
+            z-index: 2;
         }
+
         .operator-name {
             font-size: 22px;
             color: #25a6ff;
             margin-bottom: 5px;
+            transition: 0.3s;
         }
+
+        /* 名字悬浮发光 */
+        .operator-name:hover {
+            text-shadow: 0 0 10px #25a6ff;
+        }
+
         .operator-realname {
             color: #aaa;
             font-size: 14px;
             margin-bottom: 10px;
         }
+
         .operator-desc {
             color: #ccc;
             font-size: 14px;
             line-height: 1.5;
             margin-bottom: 15px;
         }
+
         .skill-box {
             margin-top: 8px;
             padding: 8px 10px;
             background: #151e36;
             border-radius: 6px;
         }
+
         .skill-type {
             color: #89f;
             font-size: 12px;
         }
+
         .skill-name {
             color: #fff;
             font-weight: bold;
             font-size: 14px;
         }
+
         .skill-desc {
             color: #bbb;
             font-size: 12px;
             line-height: 1.4;
         }
+
         footer {
             background-color: #060b18;
             text-align: center;
@@ -215,6 +287,7 @@
         }
     </style>
 </head>
+
 <body>
 
 <nav>
@@ -295,7 +368,6 @@
 </footer>
 
 <script>
-// 已修复：所有干员头像 100% 正常显示
 const operators = {
     assault: [
         {
@@ -304,7 +376,6 @@ const operators = {
             codeName: "Red Wolf",
             role: "突击兵",
             id: 10007,
-            image: "https://p.qqan.com/up/2025-3/17109167213966663.jpg",
             description: "作为突击兵，红狼在战斗时会充分利用动力外骨骼提供的高机动性，选择游击战术灵活转移，寻找合适的交战位置，趁对手反应不及将其击败。",
             skills: [
                 { type: "战术装备", name: "动力外骨骼", description: "激活腕部启动器让外骨骼功率超载，加快冲刺移动速度。击倒敌人时会恢复生命值并增加持续时间。" },
@@ -319,7 +390,6 @@ const operators = {
             codeName: "Veyron",
             role: "突击兵",
             id: 10010,
-            image: "https://p.qqan.com/up/2025-3/17109167412666663.jpg",
             description: "作为突击兵，威龙作战时会将动能辅助系统提供的快速突进能力，和虎蹲炮击倒敌人的效果结合使用，干扰敌人，形成短暂的局部优势，并快速将其扩大。",
             skills: [
                 { type: "战术装备", name: "虎蹲炮", description: "发射压缩空气弹，爆炸时将附近的敌人击倒在地。可轰5米以内的敌人，导致直接瘫痪5秒。" },
@@ -334,7 +404,6 @@ const operators = {
             codeName: "Unknown",
             role: "突击兵",
             id: 10005,
-            image: "https://p.qqan.com/up/2025-3/17109167611666663.jpg",
             description: "无名曾接受过来自哈夫克的军事训练，也有丰富的佣兵经验，擅长信息干扰，精通多种战斗技巧。他是集单兵绕后、追踪伤害、闪光突破为一体的干员，对隐蔽突袭作战造诣极深，能在战场上出其不意地刺入敌方防御空缺。",
             skills: [
                 { type: "战术装备", name: "静默潜袭", description: "启动声波/信号干扰器，缩小自身移动声音范围。使敌方侦察道具无法探测自身具体位置。持续时间：35秒（S8赛季增强后）" },
@@ -349,7 +418,6 @@ const operators = {
             codeName: "Wind",
             role: "突击兵",
             id: 10008,
-            image: "https://p.qqan.com/up/2025-3/17109167816666663.jpg",
             description: "疾风是集高机动移动、缴械突入为一体的突击型干员。她可以在交战中提升自己的移动与翻滚速度，并使用钻墙电钻缴械掩体后的敌人。",
             skills: [
                 { type: "战术装备", name: "爆发型辅助脊椎", description: "被子弹击中或有子弹从身边飞过时增加移动速度。常驻加速游泳效果" },
@@ -366,7 +434,6 @@ const operators = {
             codeName: "Bee Doctor",
             role: "支援兵",
             id: 20003,
-            image: "https://p.qqan.com/up/2025-3/17109169011666663.jpg",
             description: "作为支援兵，蜂医在参与行动时会优先保证自己的状态，并使用激素枪持续治疗，支援队友。",
             skills: [
                 { type: "战术装备", name: "激素枪", description: "核心装备，可锁定多名友军远程治疗。发射的子弹自带追踪效果。平时不开镜状态下可以同时瞄准多个友军单位，一次性给范围内的多名队友抬血。开镜之后则可以锁定单个残血目标集中治疗" },
@@ -381,7 +448,6 @@ const operators = {
             codeName: "Butterfly",
             role: "支援兵",
             id: 20006,
-            image: "https://p.qqan.com/up/2025-3/17109169211666663.jpg",
             description: "蝶是一名来自欧洲分部的医学专家，曾专攻临床医学和药物研究领域，具备出色的医学专业素养与极强的责任意识。",
             skills: [
                 { type: "战术装备", name: "蝶式救援无人机", description: "向指定位置指派两台医疗无人机，无人机会在该位置播散纳米医疗粉尘。激活队友的肾上腺素并恢复生命值。可释放蝶式救援无人机，自动向周围倒地的队友派遣救援" },
@@ -396,7 +462,6 @@ const operators = {
             codeName: "Poison",
             role: "支援兵",
             id: 20004,
-            image: "https://p.qqan.com/up/2025-3/17109169411666663.jpg",
             description: "佐娅·庞琴科娃出身技术研究领域，但战斗热情丝毫不输作战人员。她生于军人家庭，研究项目都围绕辅助作战展开，承接作战任务也极为积极。",
             skills: [
                 { type: "战术装备", name: "致盲毒雾", description: "投掷一枚致盲瓦斯弹，可使范围内的敌方致盲" },
@@ -413,7 +478,6 @@ const operators = {
             codeName: "Luna",
             role: "侦察兵",
             id: 40005,
-            image: "https://p.qqan.com/up/2025-3/17109170011666663.jpg",
             description: "作为侦察兵，在战场中的露娜是团队信息获取的主要来源，利用侦察箭矢，洞悉敌方部署，获取动向信息，帮助团队提前做好战术准备。",
             skills: [
                 { type: "战术装备", name: "侦察箭矢", description: "使用弓射出侦查箭矢，暴露箭矢下方的敌人。并在轨迹上留下探测移动生物的微型传感器" },
@@ -428,7 +492,6 @@ const operators = {
             codeName: "Hai Claw",
             role: "侦察兵",
             id: 40010,
-            image: "https://p.qqan.com/up/2025-3/17109170211666663.jpg",
             description: "骇爪作为顶尖的电子攻防专家，擅长在作战中隐蔽行踪，通过战术装备及道具获取信息，追踪敌方踪迹，使敌人无处遁形。",
             skills: [
                 { type: "战术装备", name: "信号破译器", description: "使用破译器周期性扫描前方60m最多六个敌方电子信号。并在隐形眼镜显示这些信号的追踪轨迹线。距离最近的轨迹线会显示为红色" },
@@ -443,7 +506,6 @@ const operators = {
             codeName: "Silver Wing",
             role: "侦察兵",
             id: 40008,
-            image: "https://p.qqan.com/up/2025-3/17109170411666663.jpg",
             description: "银翼，侦察兵种，擅长使用电子信息设备，其猎鹰无人机能够有效追踪视野内所有敌人的位置。战术装备为蜂鸟间谍摄像头，可破解敌方踪迹，获取敌方干员、装备和位置信息，拥有优秀的信息作战和情报获取能力。",
             skills: [
                 { type: "战术装备", name: "蜂鸟间谍摄像头", description: "通过敌方踪迹或猎鹰无人机释放一个黏附在敌人头盔上的间谍摄像头。摄像头会持续标记敌人和其附近队友的踪迹。兰登可以主动切换到摄像头视角进行观察" },
@@ -458,7 +520,6 @@ const operators = {
             codeName: "Echo",
             role: "侦察兵",
             id: 40006,
-            image: "https://p.qqan.com/up/2025-3/17109170611666663.jpg",
             description: "回响曾服役于一支水下作战部队，擅长使用声呐设备分析声纹与潜在威胁，具备优秀的信息作战能力。",
             skills: [
                 { type: "战术装备", name: "次声波干扰器", description: "投掷一个共振干扰器，对装置范围内的敌人造成干扰效果。敌人会受到减速、视野模糊、难以转向、听力下降的负面效果。基于共振原理施加多维感官压制" },
@@ -475,7 +536,6 @@ const operators = {
             codeName: "Shepherd",
             role: "工程兵",
             id: 30008,
-            image: "https://p.qqan.com/up/2025-3/17109171011666663.jpg",
             description: "作为工程兵，牧羊人在战场中肩负着照看团队背后的职责，依靠声波陷阱提前布防，并在队友需要驻守当前位置时，随时提供有效的范围防御。",
             skills: [
                 { type: "战术装备", name: "声波震慑", description: "大招：声波震射无人机。短按x可以向瞄准的方向放出无人机，无人机会向前飞行，然后震慑敌人。减慢敌人的移动速度、开枪速度，敌人的画面也会变得模糊。无人机爆炸的时候会摧毁附近的声波设备。长按x会在原地释放无人机" },
@@ -490,7 +550,6 @@ const operators = {
             codeName: "Uluru",
             role: "工程兵",
             id: 30009,
-            image: "https://p.qqan.com/up/2025-3/17109171211666663.jpg",
             description: "乌鲁鲁拥有丰富的作战经验和强大的工程开发技术，能够迅速搭建临时防御工事，成为移动堡垒，也可进行远距离打击任务，化身进攻尖刀。",
             skills: [
                 { type: "战术装备", name: "巡飞弹", description: "开镜后发射一枚图像制导巡飞弹，爆炸时会额外霰射出四枚炸弹。腰射时，巡飞弹会启用预设制导" },
@@ -505,7 +564,6 @@ const operators = {
             codeName: "Dark Blue",
             role: "工程兵",
             id: 30010,
-            image: "https://p.qqan.com/up/2025-3/17109171411666663.jpg",
             description: "阿列克谢·彼得罗夫的作战经验非常丰富，并且耐力和力量出众，他的全面防护装备是帮助小队推进的利器。有他加入阿萨拉地区的行动，我方伤亡率会大大降低，因为守护每一个人是他的本能。",
             skills: [
                 { type: "战术装备", name: "防爆套装", description: "装备重型防爆套装和全身盾，大幅降低受到的所有伤害。防爆盾的观察窗可被破坏。防爆盾攻击可以击倒敌人或击回投掷物" },
@@ -520,7 +578,6 @@ const operators = {
             codeName: "Bit",
             role: "工程兵",
             id: 30011,
-            image: "https://p.qqan.com/up/2025-3/17109171611666663.jpg",
             description: "比特，首位阿萨拉阵营干员，擅长操纵各种机械，自己研发设计了哨兵蜘蛛\"T仔\"，并能够进行自动巡逻，在探测到敌方目标后将切换至追踪模式，对目标的行动进行限制。",
             skills: [
                 { type: "战术装备", name: "哨兵母巢", description: "部署一个包含三只哨兵蜘蛛的机械母巢。哨兵蜘蛛会接近追踪敌人并爆炸，对敌人造成伤害并附着腐蚀效果。增加敌人受到的子弹伤害，被腐蚀的敌人进入智能烟雾中会被标记" },
@@ -542,7 +599,7 @@ function openModal(type) {
     list.forEach(op => {
         html += `
         <div class="operator-card">
-            <img src="${op.image}" class="operator-img" alt="${op.name}">
+            <div class="operator-img">${op.name}</div>
             <div class="operator-info">
                 <h3 class="operator-name">${op.name}</h3>
                 <div class="operator-realname">${op.realName} | ${op.codeName}</div>
