@@ -189,7 +189,7 @@
             position: relative;
         }
 
-        /* 头像区域：无图也正常显示 */
+        /* 头像区域：人物剪影底座 */
         .operator-img {
             width: 100%;
             height: 280px;
@@ -203,25 +203,43 @@
             z-index: 1;
         }
 
+        /* 人物剪影（永远显示） */
+        .operator-img::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 240px;
+            background: #25325a;
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><path fill="currentColor" d="M50 0c-15 0-25 10-25 25v20c0 10 5 15 15 15v100c0 15 20 15 20 0V60c10 0 15-5 15-15V25C75 10 65 0 50 0z"/></svg>');
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><path fill="currentColor" d="M50 0c-15 0-25 10-25 25v20c0 10 5 15 15 15v100c0 15 20 15 20 0V60c10 0 15-5 15-15V25C75 10 65 0 50 0z"/></svg>');
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            mask-position: center;
+            -webkit-mask-position: center;
+            mask-size: contain;
+            -webkit-mask-size: contain;
+            opacity: 0.7;
+            z-index: 0;
+        }
+
         /* 鼠标悬浮：干员虚影特效 */
-        .operator-card::before {
+        .operator-card:hover .operator-img::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 280px;
-            background: rgba(37, 166, 255, 0.1);
-            opacity: 0;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(37, 166, 255, 0.3) 0%, transparent 60%);
+            opacity: 1;
             transition: all 0.4s ease;
             z-index: 0;
-            border-radius: 12px 12px 0 0;
         }
 
-        .operator-card:hover::before {
-            opacity: 1;
-            background: linear-gradient(transparent, rgba(37, 166, 255, 0.25));
-            transform: scale(1.05);
+        /* 卡片整体悬浮 */
+        .operator-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 25px rgba(37, 166, 255, 0.2);
         }
 
         .operator-info {
