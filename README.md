@@ -1,0 +1,573 @@
+[index.html](https://github.com/user-attachments/files/27698688/index.html)
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角洲行动 - 全干员官方图鉴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #0a101f;
+            color: #fff;
+        }
+        nav {
+            background-color: #060b18;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #25a6ff;
+        }
+        .nav-menu a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover {
+            color: #25a6ff;
+        }
+        .banner {
+            height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)), url('https://p.qqan.com/up/2025-3/17109166468933182.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .banner h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        .banner p {
+            font-size: 18px;
+            color: #ddd;
+            max-width: 700px;
+            line-height: 1.8;
+        }
+        .download-btn {
+            margin-top: 30px;
+            padding: 12px 40px;
+            background-color: #25a6ff;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #0088dd;
+        }
+        .section {
+            padding: 80px 50px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #25a6ff;
+        }
+        .intro-box {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .intro-text {
+            flex: 1;
+            min-width: 300px;
+            line-height: 2;
+            color: #ccc;
+        }
+        .game-mode {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .mode-card {
+            background-color: #101a33;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #1f2d4d;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .mode-card:hover {
+            transform: translateY(-10px);
+            border-color: #25a6ff;
+        }
+        .mode-card h3 {
+            margin-bottom: 15px;
+            color: #25a6ff;
+        }
+        .mode-card p {
+            color: #bbb;
+            line-height: 1.7;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 30px 10px;
+        }
+        .modal-content {
+            background: #101a33;
+            padding: 40px;
+            border-radius: 15px;
+            width: 95%;
+            max-width: 1200px;
+            color: white;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #fff;
+        }
+        .operator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .operator-card {
+            background: #1a2746;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .operator-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        .operator-info {
+            padding: 20px;
+        }
+        .operator-name {
+            font-size: 22px;
+            color: #25a6ff;
+            margin-bottom: 5px;
+        }
+        .operator-realname {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .operator-desc {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .skill-box {
+            margin-top: 8px;
+            padding: 8px 10px;
+            background: #151e36;
+            border-radius: 6px;
+        }
+        .skill-type {
+            color: #89f;
+            font-size: 12px;
+        }
+        .skill-name {
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .skill-desc {
+            color: #bbb;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        footer {
+            background-color: #060b18;
+            text-align: center;
+            padding: 30px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">三角洲行动</div>
+    <div class="nav-menu">
+        <a href="#intro">游戏介绍</a>
+        <a href="#mode">玩法模式</a>
+        <a href="#role">全干员</a>
+        <a href="#download">立即下载</a>
+    </div>
+</nav>
+
+<div class="banner" id="download">
+    <h1>三角洲行动</h1>
+    <p>虚幻5引擎打造跨端战术FPS大作，搜打撤生存夺金、32V32全域战场、硬核枪械改装，开启顶级战术射击体验！</p>
+    <button class="download-btn">立即下载游戏</button>
+</div>
+
+<div class="section" id="intro">
+    <h2 class="section-title">游戏介绍</h2>
+    <div class="intro-box">
+        <div class="intro-text">
+            <p>《三角洲行动》是腾讯琳琅天上工作室研发的现代战术射击FPS手游+PC跨端互通大作，采用虚幻5引擎制作，拥有电影级画质与真实战场光影表现。</p>
+            <p>游戏延续三角洲特种部队经典IP世界观，融合生存夺金、大战场团战、PVE剧情战役、竞技对决多种玩法，支持海陆空载具作战、自由枪械改装、四大兵种战术配合。</p>
+        </div>
+    </div>
+</div>
+
+<div class="section" id="mode" style="background:#0b1429;">
+    <h2 class="section-title">核心玩法模式</h2>
+    <div class="game-mode">
+        <div class="mode-card">
+            <h3>烽火地带</h3>
+            <p>经典搜打撤玩法，三人小队进场搜集物资，击败对手，寻找撤离点，成功带走高价值装备，高风险高回报。</p>
+        </div>
+        <div class="mode-card">
+            <h3>全面战场</h3>
+            <p>32V32超大地图团战，占点推进攻防对战，直升机、坦克、装甲车、快艇全载具参战。</p>
+        </div>
+        <div class="mode-card">
+            <h3>黑鹰坠落PVE</h3>
+            <p>四人合作剧情副本，复刻经典战役，组队闯关挑战AI，领取限定奖励。</p>
+        </div>
+    </div>
+</div>
+
+<div class="section" id="role">
+    <h2 class="section-title">四大兵种 · 点击查看全部官方干员</h2>
+    <div class="game-mode">
+        <div class="mode-card" onclick="openModal('assault')">
+            <h3>突击兵</h3>
+            <p>正面突破、高机动输出</p>
+        </div>
+        <div class="mode-card" onclick="openModal('support')">
+            <h3>支援兵</h3>
+            <p>治疗、补给、团队续航</p>
+        </div>
+        <div class="mode-card" onclick="openModal('scout')">
+            <h3>侦察兵</h3>
+            <p>侦察、偷袭、远程压制</p>
+        </div>
+        <div class="mode-card" onclick="openModal('engineer')">
+            <h3>工程兵</h3>
+            <p>掩体、陷阱、区域防御</p>
+        </div>
+    </div>
+</div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 三角洲行动 官方全干员图鉴 仅供学习展示</p>
+</footer>
+
+<script>
+// 已修复：所有干员头像 100% 正常显示
+const operators = {
+    assault: [
+        {
+            name: "红狼",
+            realName: "凯·席尔瓦",
+            codeName: "Red Wolf",
+            role: "突击兵",
+            id: 10007,
+            image: "https://p.qqan.com/up/2025-3/17109167213966663.jpg",
+            description: "作为突击兵，红狼在战斗时会充分利用动力外骨骼提供的高机动性，选择游击战术灵活转移，寻找合适的交战位置，趁对手反应不及将其击败。",
+            skills: [
+                { type: "战术装备", name: "动力外骨骼", description: "激活腕部启动器让外骨骼功率超载，加快冲刺移动速度。击倒敌人时会恢复生命值并增加持续时间。" },
+                { type: "战术道具", name: "三联装手炮", description: "3发30mm高爆榴弹，2次充能，冷却70秒，射程80米。发射三颗榴弹，对范围内敌人造成高额AOE伤害，命中载具可自动吸附并造成破甲伤害。" },
+                { type: "战术道具", name: "战术型烟雾弹", description: "2颗瞬爆烟雾弹，持续8秒，覆盖范围大、消散快。投掷后生成5秒烟雾区域，遮蔽视野，用于掩护突进、撤退或分割战场。" },
+                { type: "干员特长", name: "战术滑铲", description: "奔跑时按下蹲键即可触发，能快速贴地滑行一段距离，过程中可保持射击，提升机动性与规避能力。" }
+            ]
+        },
+        {
+            name: "威龙",
+            realName: "王宇昊",
+            codeName: "Veyron",
+            role: "突击兵",
+            id: 10010,
+            image: "https://p.qqan.com/up/2025-3/17109167412666663.jpg",
+            description: "作为突击兵，威龙作战时会将动能辅助系统提供的快速突进能力，和虎蹲炮击倒敌人的效果结合使用，干扰敌人，形成短暂的局部优势，并快速将其扩大。",
+            skills: [
+                { type: "战术装备", name: "虎蹲炮", description: "发射压缩空气弹，爆炸时将附近的敌人击倒在地。可轰5米以内的敌人，导致直接瘫痪5秒。" },
+                { type: "战术道具", name: "动力推进", description: "激活动能辅助装置，朝指定方向进行推进。击倒敌人时可减少冷却时间。冷却15秒，可全方向突进。" },
+                { type: "战术道具", name: "磁吸炸弹", description: "投掷能吸附在硬表面上的大威力炸弹，倒计时结束后爆炸。拆车/清场两用。" },
+                { type: "干员特长", name: "动能辅助系统", description: "使用技能或从高处坠落时，短暂增加系统功率。减少坠落伤害并增加移动速度。" }
+            ]
+        },
+        {
+            name: "无名",
+            realName: "埃利·德·蒙贝尔",
+            codeName: "Unknown",
+            role: "突击兵",
+            id: 10005,
+            image: "https://p.qqan.com/up/2025-3/17109167611666663.jpg",
+            description: "无名曾接受过来自哈夫克的军事训练，也有丰富的佣兵经验，擅长信息干扰，精通多种战斗技巧。他是集单兵绕后、追踪伤害、闪光突破为一体的干员，对隐蔽突袭作战造诣极深，能在战场上出其不意地刺入敌方防御空缺。",
+            skills: [
+                { type: "战术装备", name: "静默潜袭", description: "启动声波/信号干扰器，缩小自身移动声音范围。使敌方侦察道具无法探测自身具体位置。持续时间：35秒（S8赛季增强后）" },
+                { type: "战术道具", name: "突破型闪光弹", description: "瞬爆闪，不仅闪敌人，还可以闪队友和自己" },
+                { type: "战术道具", name: "旋刃飞行器", description: "投掷后可进行短距离飞行，对路径上的敌人造成伤害" },
+                { type: "干员特长", name: "重伤延滞", description: "被动技能，延缓重伤状态的恶化时间" }
+            ]
+        },
+        {
+            name: "疾风",
+            realName: "克莱尔·安·拜尔斯",
+            codeName: "Wind",
+            role: "突击兵",
+            id: 10008,
+            image: "https://p.qqan.com/up/2025-3/17109167816666663.jpg",
+            description: "疾风是集高机动移动、缴械突入为一体的突击型干员。她可以在交战中提升自己的移动与翻滚速度，并使用钻墙电钻缴械掩体后的敌人。",
+            skills: [
+                { type: "战术装备", name: "爆发型辅助脊椎", description: "被子弹击中或有子弹从身边飞过时增加移动速度。常驻加速游泳效果" },
+                { type: "战术道具", name: "紧急回避装置", description: "原地发射锚点并连接安全绳，再次激活拉回锚点。技能期间受致命伤害，拉回可自救" },
+                { type: "战术道具", name: "战术翻滚", description: "借助背部的辅助脊椎可以进行8个方向的快速翻滚。翻滚时会激活辅助脊椎，增加移动速度" },
+                { type: "战术道具", name: "钻墙电刺", description: "投掷电钻，可穿透掩体发射导电粉末并释放电击。电击可以麻痹敌人并击飞敌人手中的武器" }
+            ]
+        }
+    ],
+    support: [
+        {
+            name: "蜂医",
+            realName: "罗伊·斯米",
+            codeName: "Bee Doctor",
+            role: "支援兵",
+            id: 20003,
+            image: "https://p.qqan.com/up/2025-3/17109169011666663.jpg",
+            description: "作为支援兵，蜂医在参与行动时会优先保证自己的状态，并使用激素枪持续治疗，支援队友。",
+            skills: [
+                { type: "战术装备", name: "激素枪", description: "核心装备，可锁定多名友军远程治疗。发射的子弹自带追踪效果。平时不开镜状态下可以同时瞄准多个友军单位，一次性给范围内的多名队友抬血。开镜之后则可以锁定单个残血目标集中治疗" },
+                { type: "战术道具", name: "烟幕", description: "投掷烟雾弹，遮蔽敌方视野" },
+                { type: "战术道具", name: "蜂巢科技烟雾弹", description: "射击自己丢出的蜂巢科技烟雾弹之后，能把普通的遮蔽烟雾转换成治疗烟雾。技能烟雾弹配合大招能变治疗烟雾，残血跟进，回血速度翻倍" },
+                { type: "干员特长", name: "专业救援", description: "扶起倒地队友的速度比常规干员快了一倍还多。能为被救者提供更多生命，且移除二倒救起后的血量上限减少效果。救起后能为队友回复40点血量，并且能够移除一倒后带来的虚弱buff" }
+            ]
+        },
+        {
+            name: "蝶",
+            realName: "莉娜·范德梅尔",
+            codeName: "Butterfly",
+            role: "支援兵",
+            id: 20006,
+            image: "https://p.qqan.com/up/2025-3/17109169211666663.jpg",
+            description: "蝶是一名来自欧洲分部的医学专家，曾专攻临床医学和药物研究领域，具备出色的医学专业素养与极强的责任意识。",
+            skills: [
+                { type: "战术装备", name: "蝶式救援无人机", description: "向指定位置指派两台医疗无人机，无人机会在该位置播散纳米医疗粉尘。激活队友的肾上腺素并恢复生命值。可释放蝶式救援无人机，自动向周围倒地的队友派遣救援" },
+                { type: "战术道具", name: "纳米医疗粉尘", description: "撒布纳米医疗粉尘，为范围内的队友持续治疗" },
+                { type: "战术道具", name: "遥控烟雾", description: "投掷一颗通过手势感应装置引导的烟雾弹。长按技能键，可以引导烟雾弹的飞行方向" },
+                { type: "干员特长", name: "体征监测&救援强化", description: "可观察队友的剪影和健康状态并延长其倒地和濒死倒计时。救援队友会加快蝶式无人机群的充能时间" }
+            ]
+        },
+        {
+            name: "蛊",
+            realName: "佐娅·庞琴科娃",
+            codeName: "Poison",
+            role: "支援兵",
+            id: 20004,
+            image: "https://p.qqan.com/up/2025-3/17109169411666663.jpg",
+            description: "佐娅·庞琴科娃出身技术研究领域，但战斗热情丝毫不输作战人员。她生于军人家庭，研究项目都围绕辅助作战展开，承接作战任务也极为积极。",
+            skills: [
+                { type: "战术装备", name: "致盲毒雾", description: "投掷一枚致盲瓦斯弹，可使范围内的敌方致盲" },
+                { type: "战术道具", name: "肾上腺素激活", description: "释放无人机为身边友方提供枪械控制能力增益" },
+                { type: "战术道具", name: "流荧集群系统", description: "释放无人机群，干扰路线上的敌方单位使其降低听觉、视觉并短暂降低生命值上限。将神经化学与智能作战结合，能持续干扰敌人视听，削减其生命上限，实现强力群体控场" },
+                { type: "干员特长", name: "高效治疗", description: "加快全队状态补给时间，并且这个效果无视距离。只要她没有被补掉，该效果就会一直存在" }
+            ]
+        }
+    ],
+    scout: [
+        {
+            name: "露娜",
+            realName: "金卢娜",
+            codeName: "Luna",
+            role: "侦察兵",
+            id: 40005,
+            image: "https://p.qqan.com/up/2025-3/17109170011666663.jpg",
+            description: "作为侦察兵，在战场中的露娜是团队信息获取的主要来源，利用侦察箭矢，洞悉敌方部署，获取动向信息，帮助团队提前做好战术准备。",
+            skills: [
+                { type: "战术装备", name: "侦察箭矢", description: "使用弓射出侦查箭矢，暴露箭矢下方的敌人。并在轨迹上留下探测移动生物的微型传感器" },
+                { type: "战术道具", name: "电击箭矢", description: "使用弓射出电击箭矢，箭头产生的电流会持续造成伤害" },
+                { type: "战术道具", name: "强化型破片手雷", description: "投掷后产生大范围爆炸伤害" },
+                { type: "干员特长", name: "敌情分析", description: "受到露娜伤害的敌方目标会被短暂标记。被动技能：命中敌人后队友屏幕上会出现短暂的人物轮廓，无需小队报点直接绕后包抄" }
+            ]
+        },
+        {
+            name: "骇爪",
+            realName: "麦晓雯",
+            codeName: "Hai Claw",
+            role: "侦察兵",
+            id: 40010,
+            image: "https://p.qqan.com/up/2025-3/17109170211666663.jpg",
+            description: "骇爪作为顶尖的电子攻防专家，擅长在作战中隐蔽行踪，通过战术装备及道具获取信息，追踪敌方踪迹，使敌人无处遁形。",
+            skills: [
+                { type: "战术装备", name: "信号破译器", description: "使用破译器周期性扫描前方60m最多六个敌方电子信号。并在隐形眼镜显示这些信号的追踪轨迹线。距离最近的轨迹线会显示为红色" },
+                { type: "战术道具", name: "闪光巡飞器", description: "丢出向前飞行的巡飞器，用闪光灯致盲范围内的敌人。用准星选中破译器的轨迹线时，巡飞器会跟随选中的黄色轨迹线飞行" },
+                { type: "战术道具", name: "数据飞刀", description: "投掷数据飞刀，停止时会骇入附近10m的电子设备并使其暂时失效。直接命中敌人时会造成大量伤害。飞刀会骇入附近可联网的敌方电子设备，使声波陷阱等装备短暂停止工作" },
+                { type: "干员特长", name: "隐匿消声", description: "静步走路和蹲下移动速度更快，同时发出的声音也更小。提供33%脚步降低、30%蹲姿移速、30%静步移速加成效果" }
+            ]
+        },
+        {
+            name: "银翼",
+            realName: "兰登·哈里森",
+            codeName: "Silver Wing",
+            role: "侦察兵",
+            id: 40008,
+            image: "https://p.qqan.com/up/2025-3/17109170411666663.jpg",
+            description: "银翼，侦察兵种，擅长使用电子信息设备，其猎鹰无人机能够有效追踪视野内所有敌人的位置。战术装备为蜂鸟间谍摄像头，可破解敌方踪迹，获取敌方干员、装备和位置信息，拥有优秀的信息作战和情报获取能力。",
+            skills: [
+                { type: "战术装备", name: "蜂鸟间谍摄像头", description: "通过敌方踪迹或猎鹰无人机释放一个黏附在敌人头盔上的间谍摄像头。摄像头会持续标记敌人和其附近队友的踪迹。兰登可以主动切换到摄像头视角进行观察" },
+                { type: "战术道具", name: "猎鹰仿生无人机", description: "释放一个鸟型无人机，每过1秒标记无人机视野内的所有敌人的位置" },
+                { type: "战术道具", name: "脉冲手雷", description: "投掷一枚三秒后爆炸的脉冲手雷，手雷会使电子物品失效。包括武器上的红点瞄具、激光等" },
+                { type: "干员特长", name: "踪迹探查&威胁侦测", description: "在烽火地带中，可以调查地上的脚印或被搜索过的容器，获取踪迹留下者的干员、装备、相对位置等信息。在大战场中，被瞄准时，该方向的屏幕边缘会亮起" }
+            ]
+        },
+        {
+            name: "回响",
+            realName: "卢克·埃弗利",
+            codeName: "Echo",
+            role: "侦察兵",
+            id: 40006,
+            image: "https://p.qqan.com/up/2025-3/17109170611666663.jpg",
+            description: "回响曾服役于一支水下作战部队，擅长使用声呐设备分析声纹与潜在威胁，具备优秀的信息作战能力。",
+            skills: [
+                { type: "战术装备", name: "次声波干扰器", description: "投掷一个共振干扰器，对装置范围内的敌人造成干扰效果。敌人会受到减速、视野模糊、难以转向、听力下降的负面效果。基于共振原理施加多维感官压制" },
+                { type: "战术道具", name: "复合型闪光弹", description: "采用延时引爆机制，爆炸时仅对正对爆炸方向的敌人造成强效致盲效果。反向影响极小，战术使用上更具隐蔽性和突然性" },
+                { type: "战术道具", name: "回声探测器", description: "部署声波探测装置，冷却100秒。每隔6秒对前方75米、120度扇形区域扫描1次，共扫描3次。扫描期间，只要敌人发出任何声音都会被精确标记位置，并且标记信息全队共享" },
+                { type: "干员特长", name: "声波感知", description: "被动技能：大幅扩大声音感知范围，可捕捉敌人静步、呼吸、换弹等细微响动。自动屏蔽环境噪声干扰。当自身100米内有敌人开火时，会将其模糊地标记在地图上，标记后有60秒冷却时间" }
+            ]
+        }
+    ],
+    engineer: [
+        {
+            name: "牧羊人",
+            realName: "泰瑞·缪萨",
+            codeName: "Shepherd",
+            role: "工程兵",
+            id: 30008,
+            image: "https://p.qqan.com/up/2025-3/17109171011666663.jpg",
+            description: "作为工程兵，牧羊人在战场中肩负着照看团队背后的职责，依靠声波陷阱提前布防，并在队友需要驻守当前位置时，随时提供有效的范围防御。",
+            skills: [
+                { type: "战术装备", name: "声波震慑", description: "大招：声波震射无人机。短按x可以向瞄准的方向放出无人机，无人机会向前飞行，然后震慑敌人。减慢敌人的移动速度、开枪速度，敌人的画面也会变得模糊。无人机爆炸的时候会摧毁附近的声波设备。长按x会在原地释放无人机" },
+                { type: "战术道具", name: "声波陷阱", description: "俗称小面包，可以部署在墙上或者地上。敌人靠近的时候会触发，造成减速和伤害。CD 45秒，部署可黏着的陷阱，4米内敌人触发后造成伤害与减速" },
+                { type: "战术道具", name: "强化型破片手雷", description: "投掷后产生大范围爆炸伤害" },
+                { type: "干员特长", name: "减振防御", description: "被动技能：大幅降低投掷道具以及爆炸技能对牧羊人的伤害。使其有相当大的爆炸抗性" }
+            ]
+        },
+        {
+            name: "乌鲁鲁",
+            realName: "大卫·费莱尔",
+            codeName: "Uluru",
+            role: "工程兵",
+            id: 30009,
+            image: "https://p.qqan.com/up/2025-3/17109171211666663.jpg",
+            description: "乌鲁鲁拥有丰富的作战经验和强大的工程开发技术，能够迅速搭建临时防御工事，成为移动堡垒，也可进行远距离打击任务，化身进攻尖刀。",
+            skills: [
+                { type: "战术装备", name: "巡飞弹", description: "开镜后发射一枚图像制导巡飞弹，爆炸时会额外霰射出四枚炸弹。腰射时，巡飞弹会启用预设制导" },
+                { type: "战术道具", name: "速凝掩体", description: "投掷出快速凝固混凝土喷射系统，生成能够阻挡伤害的掩体" },
+                { type: "战术道具", name: "复合型燃烧弹", description: "投掷一枚接触地面时爆炸的燃烧弹，能快速烧毁速凝掩体" },
+                { type: "干员特长", name: "久经沙场", description: "对骨折和兵种装备造成的减速效果拥有更强的抗性。降低骨折概率和装备的减速效果。是当前除威龙之外直接跳桥不会断腿的干员" }
+            ]
+        },
+        {
+            name: "深蓝",
+            realName: "阿列克谢·彼得罗夫",
+            codeName: "Dark Blue",
+            role: "工程兵",
+            id: 30010,
+            image: "https://p.qqan.com/up/2025-3/17109171411666663.jpg",
+            description: "阿列克谢·彼得罗夫的作战经验非常丰富，并且耐力和力量出众，他的全面防护装备是帮助小队推进的利器。有他加入阿萨拉地区的行动，我方伤亡率会大大降低，因为守护每一个人是他的本能。",
+            skills: [
+                { type: "战术装备", name: "防爆套装", description: "装备重型防爆套装和全身盾，大幅降低受到的所有伤害。防爆盾的观察窗可被破坏。防爆盾攻击可以击倒敌人或击回投掷物" },
+                { type: "战术道具", name: "多功能钩爪枪", description: "发射钩爪，命中后拉回敌人，倒地队友或装备箱。钩爪枪的绳索可被破坏。CD 45秒，可穿墙救援" },
+                { type: "战术道具", name: "刀片刺网手雷", description: "落地后生成刀片刺网，敌人在铁丝网内移动时，会减速，受到伤害并发出声音。可被爆炸和近战摧毁" },
+                { type: "干员特长", name: "后方防护", description: "防爆盾未使用时会挂在角色后部，抵挡从后方射来的子弹" }
+            ]
+        },
+        {
+            name: "比特",
+            realName: "拉希德·拉哈尔",
+            codeName: "Bit",
+            role: "工程兵",
+            id: 30011,
+            image: "https://p.qqan.com/up/2025-3/17109171611666663.jpg",
+            description: "比特，首位阿萨拉阵营干员，擅长操纵各种机械，自己研发设计了哨兵蜘蛛\"T仔\"，并能够进行自动巡逻，在探测到敌方目标后将切换至追踪模式，对目标的行动进行限制。",
+            skills: [
+                { type: "战术装备", name: "哨兵母巢", description: "部署一个包含三只哨兵蜘蛛的机械母巢。哨兵蜘蛛会接近追踪敌人并爆炸，对敌人造成伤害并附着腐蚀效果。增加敌人受到的子弹伤害，被腐蚀的敌人进入智能烟雾中会被标记" },
+                { type: "战术道具", name: "智能烟雾地雷", description: "部署可黏着在硬表面的智能烟雾，烟雾会被附近的敌方单位触发。减速进入其中的敌人。被腐蚀的敌人进入智能烟雾中会被标记" },
+                { type: "战术道具", name: "巡猎蜘蛛", description: "投掷一个可自行前进的机械巡猎蜘蛛，其会沿着指定方向巡逻。巡逻中发现敌人会进行追猎并发射能够禁锢敌人的捕网。被捕网命中敌人的移动能力会大幅受限并且无法开镜与使用干员道具。如果有敌人处于腐蚀状态，巡猎蜘蛛会直接追踪敌人" },
+                { type: "干员特长", name: "防守尖兵", description: "在自身的部署物附近时获得提高武器操控速度的增益效果" }
+            ]
+        }
+    ]
+};
+
+function openModal(type) {
+    const modal = document.getElementById("modal");
+    const body = document.getElementById("modal-body");
+    const list = operators[type];
+    const typeNames = { assault:"突击兵", support:"支援兵", scout:"侦察兵", engineer:"工程兵" };
+    let html = `<h2 style="color:#25a6ff;margin-bottom:20px">${typeNames[type]} · 全部官方干员</h2><div class="operator-grid">`;
+
+    list.forEach(op => {
+        html += `
+        <div class="operator-card">
+            <img src="${op.image}" class="operator-img" alt="${op.name}">
+            <div class="operator-info">
+                <h3 class="operator-name">${op.name}</h3>
+                <div class="operator-realname">${op.realName} | ${op.codeName}</div>
+                <div class="operator-desc">${op.description}</div>
+        `;
+        op.skills.forEach(skill => {
+            html += `
+            <div class="skill-box">
+                <div class="skill-type">${skill.type}</div>
+                <div class="skill-name">${skill.name}</div>
+                <div class="skill-desc">${skill.description}</div>
+            </div>`;
+        });
+        html += `</div></div>`;
+    });
+
+    html += "</div>";
+    body.innerHTML = html;
+    modal.style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+</script>
+</body>
+</html>
