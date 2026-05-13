@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角洲行动 - 官方游戏专题页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #0a101f;
+            color: #fff;
+        }
+        /* 导航栏 */
+        nav {
+            background-color: #060b18;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #25a6ff;
+        }
+        .nav-menu a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover {
+            color: #25a6ff;
+        }
+        /* 头部横幅 */
+        .banner {
+            height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)), 
+            url('https://picsum.photos/id/159/1920/1080') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .banner h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .banner p {
+            font-size: 18px;
+            color: #ddd;
+            max-width: 700px;
+            line-height: 1.8;
+        }
+        .download-btn {
+            margin-top: 30px;
+            padding: 12px 40px;
+            background-color: #25a6ff;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #0088dd;
+        }
+        /* 通用板块样式 */
+        .section {
+            padding: 80px 50px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #25a6ff;
+        }
+        /* 游戏介绍 */
+        .intro-box {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .intro-text {
+            flex: 1;
+            min-width: 300px;
+            line-height: 2;
+            color: #ccc;
+        }
+        /* 玩法卡片 */
+        .game-mode {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, min-width: 280px, 1fr);
+            gap: 30px;
+        }
+        .mode-card {
+            background-color: #101a33;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #1f2d4d;
+            transition: 0.3s;
+        }
+        .mode-card:hover {
+            transform: translateY(-10px);
+            border-color: #25a6ff;
+        }
+        .mode-card h3 {
+            margin-bottom: 15px;
+            color: #25a6ff;
+        }
+        .mode-card p {
+            color: #bbb;
+            line-height: 1.7;
+        }
+        /* 页脚 */
+        footer {
+            background-color: #060b18;
+            text-align: center;
+            padding: 30px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="logo">三角洲行动</div>
+        <div class="nav-menu">
+            <a href="#intro">游戏介绍</a>
+            <a href="#mode">玩法模式</a>
+            <a href="#role">兵种角色</a>
+            <a href="#download">立即下载</a>
+        </div>
+    </nav>
+
+    <!-- 首页横幅 -->
+    <div class="banner" id="download">
+        <h1>三角洲行动</h1>
+        <p>虚幻5引擎打造跨端战术FPS大作，搜打撤生存夺金、32V32全域战场、硬核枪械改装，开启顶级战术射击体验！</p>
+        <button class="download-btn">立即下载游戏</button>
+    </div>
+
+    <!-- 游戏介绍 -->
+    <div class="section" id="intro">
+        <h2 class="section-title">游戏介绍</h2>
+        <div class="intro-box">
+            <div class="intro-text">
+                <p>《三角洲行动》是腾讯琳琅天上工作室研发的现代战术射击FPS手游+PC跨端互通大作，采用虚幻5引擎制作，拥有电影级画质与真实战场光影表现。</p>
+                <p>游戏延续三角洲特种部队经典IP世界观，融合生存夺金、大战场团战、PVE剧情战役、竞技对决多种玩法，支持海陆空载具作战、自由枪械改装、四大兵种战术配合。</p>
+                <p>全平台数据互通，手机、电脑同享游戏进度，硬核战术玩法，适合喜欢FPS、生存撤离、团队竞技的玩家。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 玩法模式 -->
+    <div class="section" id="mode" style="background-color:#0b1429;">
+        <h2 class="section-title">核心玩法模式</h2>
+        <div class="game-mode">
+            <div class="mode-card">
+                <h3>烽火地带</h3>
+                <p>经典搜打撤玩法，三人小队进场搜集物资，击败对手，寻找撤离点，成功带走高价值装备，高风险高回报。</p>
+            </div>
+            <div class="mode-card">
+                <h3>全面战场</h3>
+                <p>32V32超大地图团战，占点推进攻防对战，直升机、坦克、装甲车、快艇全载具参战。</p>
+            </div>
+            <div class="mode-card">
+                <h3>黑鹰坠落PVE</h3>
+                <p>四人合作剧情副本，复刻经典战役，组队闯关挑战AI，领取限定奖励。</p>
+            </div>
+            <div class="mode-card">
+                <h3>红鼠窝竞技场</h3>
+                <p>快节奏小地图竞技，快速复活纯枪法对决，适合练枪、休闲对战。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 兵种介绍 -->
+    <div class="section" id="role">
+        <h2 class="section-title">四大特色兵种</h2>
+        <div class="game-mode">
+            <div class="mode-card">
+                <h3>突击兵</h3>
+                <p>正面突破主力，高机动高火力，适合冲锋团战、抢占关键点。</p>
+            </div>
+            <div class="mode-card">
+                <h3>支援兵</h3>
+                <p>团队治疗补给，可为队友回血、投放物资，续航能力极强。</p>
+            </div>
+            <div class="mode-card">
+                <h3>侦察兵</h3>
+                <p>无人机侦察、探测敌方位置，擅长偷袭、信息收集。</p>
+            </div>
+            <div class="mode-card">
+                <h3>工程兵</h3>
+                <p>架设掩体、布置陷阱、破解据点，战术防守核心。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>© 2026 三角洲行动 游戏专题页 仅供学习展示</p>
+    </footer>
+</body>
+</html>
